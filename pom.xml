@@ -435,6 +435,13 @@
     </dependencyManagement>
 
     <build>
+        <extensions>
+            <extension>
+                <groupId>com.github.seahen</groupId>
+                <artifactId>maven-s3-wagon</artifactId>
+                <version>1.3.0</version>
+            </extension>
+        </extensions>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -612,15 +619,10 @@
     <!-- deploy and release configuration -->
     <distributionManagement>
         <snapshotRepository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>s3.snapshot</id>
+            <url>s3://segovia-build-artifacts/axon4/snapshots</url>
             <uniqueVersion>true</uniqueVersion>
         </snapshotRepository>
-        <repository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-            <uniqueVersion>false</uniqueVersion>
-        </repository>
     </distributionManagement>
     <scm>
         <connection>scm:git:git://github.com/AxonFramework/AxonFramework.git</connection>
