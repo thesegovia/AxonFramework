@@ -152,7 +152,7 @@ public class ChainingConverter implements Converter {
             converter.expectedSourceType();
             registerConverter(converter);
         } catch (Exception e) {
-            logger.warn("An exception occurred while trying to initialize a [{}].", converterType.getName(), e);
+            logger.error("An exception occurred while trying to initialize a [{}].", converterType.getName(), e);
         } catch (NoClassDefFoundError e) {
             logger.info("ContentTypeConverter of type [{}] is ignored. It seems to rely on a class that is " +
                                 "not available in the class loader: {}", converterType, e.getMessage());

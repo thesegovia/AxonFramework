@@ -252,7 +252,7 @@ public class JdbcTokenStore implements TokenStore {
                                           },
                                           c -> releaseClaim(c, processorName, segment));
             if (result[0] < 1) {
-                logger.warn(
+                logger.error(
                         "Releasing claim of token {}/{} failed. It was owned by another node.", processorName, segment
                 );
             }
