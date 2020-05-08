@@ -294,7 +294,7 @@ public class TrackingEventProcessor extends AbstractEventProcessor {
                 } catch (Exception e) {
                     // Make sure to start with a clean event stream. The exception may have caused an illegal state
                     if (errorWaitTime == 1) {
-                        logger.warn("Error occurred. Starting retry mode.", e);
+                        logger.error("Error occurred. Starting retry mode.", e);
                     }
                     logger.warn("Releasing claim on token and preparing for retry in {}s", errorWaitTime);
                     activeSegments.computeIfPresent(segment.getSegmentId(), (k, status) -> status.markError(e));
@@ -1128,7 +1128,7 @@ public class TrackingEventProcessor extends AbstractEventProcessor {
                     }
                     waitTime = 1;
                 } catch (Exception e) {
-                    logger.warn("Fetch Segments for Processor '{}' failed: {}. Preparing for retry in {}s",
+                    logger.error("Fetch Segments for Processor '{}' failed: {}. Preparing for retry in {}s",
                                 processorName, e.getMessage(), waitTime);
                     doSleepFor(SECONDS.toMillis(waitTime));
                     waitTime = Math.min(waitTime * 2, 60);
